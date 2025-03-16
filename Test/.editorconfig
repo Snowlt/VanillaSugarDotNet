@@ -1,0 +1,13 @@
+root = true
+
+[*]
+# NUnit2002: Consider using Assert.That(expr, Is.False) instead of ClassicAssert.IsFalse(expr)
+dotnet_diagnostic.NUnit2002.severity = silent
+# NUnit2003: Consider using Assert.That(expr, Is.True) instead of ClassicAssert.IsTrue(expr)
+dotnet_diagnostic.NUnit2003.severity = silent
+# NUnit2005: Consider using Assert.That(actual, Is.EqualTo(expected)) instead of ClassicAssert.AreEqual(expected, actual)
+dotnet_diagnostic.NUnit2005.severity = silent
+# NUnit2006: Consider using Assert.That(actual, Is.Not.EqualTo(expected)) instead of ClassicAssert.AreNotEqual(expected, actual)
+dotnet_diagnostic.NUnit2006.severity = silent
+# NUnit2031: Consider using Assert.That(actual, Is.Not.SameAs(expected)) instead of ClassicAssert.AreNotSame(expected, actual)
+dotnet_diagnostic.NUnit2031.severity = silent
