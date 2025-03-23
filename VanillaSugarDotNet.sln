@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VanillaSugar.Core", "Vanill
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{8AB4FCD8-F246-4654-8F2A-82DAF1499068}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VanillaSugar.Extension", "VanillaSugar.Extension\VanillaSugar.Extension.csproj", "{35DE17D8-E9FE-431E-B545-202B34AAE37A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{8AB4FCD8-F246-4654-8F2A-82DAF1499068}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8AB4FCD8-F246-4654-8F2A-82DAF1499068}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8AB4FCD8-F246-4654-8F2A-82DAF1499068}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35DE17D8-E9FE-431E-B545-202B34AAE37A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35DE17D8-E9FE-431E-B545-202B34AAE37A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35DE17D8-E9FE-431E-B545-202B34AAE37A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35DE17D8-E9FE-431E-B545-202B34AAE37A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
