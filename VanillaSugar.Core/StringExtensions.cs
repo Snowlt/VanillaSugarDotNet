@@ -3,6 +3,9 @@ using System.Text;
 
 namespace VanillaSugar.Core
 {
+    /// <summary>
+    /// 为 <see cref="string"/> 提供部分字符串操作扩展方法。
+    /// </summary>
     public static class StringExtensions
     {
         /// <summary>

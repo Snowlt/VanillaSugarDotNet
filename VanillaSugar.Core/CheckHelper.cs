@@ -1,5 +1,8 @@
 namespace VanillaSugar.Core
 {
+    /// <summary>
+    /// 提供检查多个对象的静态方法。
+    /// </summary>
     public static class CheckHelper
     {
         /// <summary>

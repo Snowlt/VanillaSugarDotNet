@@ -6,14 +6,7 @@ namespace VanillaSugar.Core
 {
     /// <summary>
     /// 切片，为可索引对象提供增强的裁剪计算操作。
-    /// 同时为以下类型提供了扩展方法，可直接进行切片操作：
-    /// <list type="bullet">
-    ///     <item><see cref="IList{T}"/> 列表</item>
-    ///     <item><see cref="IReadOnlyList{T}"/> 只读列表</item>
-    ///     <item><see cref="ICollection{T}"/> 可枚举集合（会转为列表进行处理）</item>
-    ///     <item><see cref="string"/> 字符串</item>
-    ///     <item>数组(<c>T[]</c>)</item>
-    /// </list>
+    /// <para>同时为 <see cref="string"/> 字符串、<see cref="IList{T}"/> 等类型提供了扩展方法，可直接执行切片操作。</para>
     /// <para>每次切片操作的返回值都是新对象，不会对源对象产生副作用。可以用于替代 <see cref="List{T}.GetRange(int, int)"/>、<see cref="string.Substring(int, int)"/> 等常用方法。</para>
     ///
     /// <para>主要用法为：<c>target.Slice(start, stop, step)</c></para>
@@ -29,8 +22,8 @@ namespace VanillaSugar.Core
     /// 例如:
     /// <code>
     /// int[] a = new int[] {1, 2, 3, 4, 5};
-    /// int[] b = Slice.Slice(a, 1, 4, null);     // 截取 -> b = [2, 3, 4]
-    /// int[] c = Slice.Slice(a, null, null, -1); // 逆序 -> c = [5, 4, 3, 2, 1]
+    /// int[] b = a.Slice(a, 1, 4, null);     // 截取 -> b = [2, 3, 4]
+    /// int[] c = a.Slice(a, null, null, -1); // 逆序 -> c = [5, 4, 3, 2, 1]
     /// </code>
     /// 对应 Python 中:
     /// <code>
@@ -130,6 +123,10 @@ namespace VanillaSugar.Core
             return value < min ? min : Math.Min(value, max);
         }
 
+        /// <summary>
+        /// 生成描述切片信息的字符串
+        /// </summary>
+        /// <returns>字符串</returns>
         public override string ToString()
         {
             return "Slice{start=" + Start + ", stopIncluded=" + StopIncluded + ", step=" + Step + ", size=" + Size +
@@ -137,6 +134,16 @@ namespace VanillaSugar.Core
         }
     }
 
+    /// <summary>
+    /// 为以下类型提供了扩展方法，可直接进行切片操作：
+    /// <list type="bullet">
+    ///     <item><see cref="IList{T}"/> 列表</item>
+    ///     <item><see cref="IReadOnlyList{T}"/> 只读列表</item>
+    ///     <item><see cref="IEnumerable{T}"/> 可枚举对象（会转为列表进行处理）</item>
+    ///     <item><see cref="string"/> 字符串</item>
+    ///     <item>数组(<c>T[]</c>)</item>
+    /// </list>
+    /// </summary>
     public static class SliceExtensions
     {
         /// <summary>

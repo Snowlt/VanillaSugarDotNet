@@ -4,6 +4,9 @@ using System.Linq;
 
 namespace VanillaSugar.Core
 {
+    /// <summary>
+    /// 提供基于 <see cref="Random"/> 的常用随机操作静态方法。
+    /// </summary>
     public static class RandHelper
     {
         private static readonly Random Random = new Random();
