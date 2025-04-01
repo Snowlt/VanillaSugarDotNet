@@ -9,5 +9,11 @@ dotnet_diagnostic.NUnit2003.severity = silent
 dotnet_diagnostic.NUnit2005.severity = silent
 # NUnit2006: Consider using Assert.That(actual, Is.Not.EqualTo(expected)) instead of ClassicAssert.AreNotEqual(expected, actual)
 dotnet_diagnostic.NUnit2006.severity = silent
+# NUnit2015: Consider using the constraint model, Assert.That(actual, Is.SameAs(expected)), instead of the classic model, Assert.AreSame(expected, actual)
+dotnet_diagnostic.NUnit2015.severity = silent
+# NUnit2017: Consider using the constraint model, Assert.That(expr, Is.Null), instead of the classic model, Assert.IsNull(expr)
+dotnet_diagnostic.NUnit2017.severity = silent
+# NUnit2019: Consider using the constraint model, Assert.That(expr, Is.Not.Null), instead of the classic model, Assert.IsNotNull(expr)
+dotnet_diagnostic.NUnit2019.severity = silent
 # NUnit2031: Consider using Assert.That(actual, Is.Not.SameAs(expected)) instead of ClassicAssert.AreNotSame(expected, actual)
 dotnet_diagnostic.NUnit2031.severity = silent

@@ -24,6 +24,7 @@
     <ItemGroup>
         <ProjectReference Include="..\VanillaSugar.Core\VanillaSugar.Core.csproj"/>
         <ProjectReference Include="..\VanillaSugar.Extension\VanillaSugar.Extension.csproj"/>
+        <ProjectReference Include="..\VanillaSugar.Ini\VanillaSugar.Ini.csproj"/>
     </ItemGroup>
 
 </Project>

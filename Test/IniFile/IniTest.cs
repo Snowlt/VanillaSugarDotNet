@@ -215,9 +215,9 @@ public class IniTest
             {"key1", "value1"},
             {"key2", "value2"}
         };
-        CollectionAssert.AreEqual(example1, sec1.ToMap().ToList());
+        CollectionAssert.AreEqual(example1, sec1.ToDict().ToList());
         Dictionary<string, string> example2 = new Dictionary<string, string> {{"key3", "value3"}};
-        CollectionAssert.AreEqual(example2, sec2.ToMap().ToList());
+        CollectionAssert.AreEqual(example2, sec2.ToDict().ToList());
         // Comment
         CollectionAssert.AreEqual(ImmutableList.Create("This is a comment"), untitled.GetComments().ToList());
         CollectionAssert.AreEqual(ImmutableList<string>.Empty, sec1.GetComments().ToList());

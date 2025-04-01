@@ -351,7 +351,7 @@ namespace VanillaSugar.Ini
         /// 将区块中项（键值对）生成为一个新 <see cref="Dictionary{String, String}">Dictionary</see>。
         /// </summary>
         /// <returns>区块中的项</returns>
-        public IDictionary<string, string> ToMap()
+        public IDictionary<string, string> ToDict()
         {
             return new Dictionary<string, string>(_items);
         }
