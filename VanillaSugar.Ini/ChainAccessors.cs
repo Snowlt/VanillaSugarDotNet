@@ -21,7 +21,7 @@ namespace VanillaSugar.Ini
         /// </summary>
         /// <param name="sectionName">区块名</param>
         /// <param name="newSectionName">新的区块名</param>
-        /// <returns>Ini 链式访问器</returns>
+        /// <returns>Ini 链式访问器。</returns>
         public ChainIniAccessor RenameSection(string sectionName, string newSectionName)
         {
             _ini.Rename(sectionName, newSectionName);
@@ -32,7 +32,7 @@ namespace VanillaSugar.Ini
         /// 移除 Ini 中指定的区块。
         /// </summary>
         /// <param name="sectionName">区块名</param>
-        /// <returns>Ini 链式访问器</returns>
+        /// <returns>Ini 链式访问器。</returns>
         public ChainIniAccessor RemoveSection(string sectionName)
         {
             _ini.Remove(sectionName);
@@ -43,7 +43,7 @@ namespace VanillaSugar.Ini
         /// 打开并操作 INI 中的指定区块，如果区块不存在则会自动添加。
         /// </summary>
         /// <param name="sectionName">区块名</param>
-        /// <returns>区块的链式访问器</returns>
+        /// <returns>区块的链式访问器。</returns>
         public ChainSectionAccessor OpenSection(string sectionName)
         {
             return new ChainSectionAccessor(this, _ini.GetOrAdd(sectionName));
@@ -52,7 +52,7 @@ namespace VanillaSugar.Ini
         /// <summary>
         /// 打开并操作 INI 中的无标题区块。
         /// </summary>
-        /// <returns>区块的链式访问器</returns>
+        /// <returns>区块的链式访问器。</returns>
         public ChainSectionAccessor OpenUntitledSection()
         {
             return new ChainSectionAccessor(this, _ini.UntitledSection);
@@ -78,7 +78,7 @@ namespace VanillaSugar.Ini
         /// </summary>
         /// <param name="key">键名</param>
         /// <param name="value">值</param>
-        /// <returns>区块的链式访问器</returns>
+        /// <returns>区块的链式访问器。</returns>
         public ChainSectionAccessor Set(string key, string value)
         {
             _section.Set(key, value);
@@ -90,7 +90,7 @@ namespace VanillaSugar.Ini
         /// </summary>
         /// <param name="key">键名</param>
         /// <param name="newKey">新的键名</param>
-        /// <returns>区块的链式访问器</returns>
+        /// <returns>区块的链式访问器。</returns>
         public ChainSectionAccessor Rename(string key, string newKey)
         {
             _section.Rename(key, newKey);
@@ -101,7 +101,7 @@ namespace VanillaSugar.Ini
         /// 移除区块中指定的项。
         /// </summary>
         /// <param name="key">键名</param>
-        /// <returns>区块的链式访问器</returns>
+        /// <returns>区块的链式访问器。</returns>
         public ChainSectionAccessor Remove(string key)
         {
             _section.Remove(key);
@@ -112,7 +112,7 @@ namespace VanillaSugar.Ini
         /// 在区块末尾添加一条注释。
         /// </summary>
         /// <param name="comment">注释</param>
-        /// <returns>区块的链式访问器</returns>
+        /// <returns>区块的链式访问器。</returns>
         public ChainSectionAccessor AddComment(string comment)
         {
             _section.AddComments(comment);
@@ -122,7 +122,7 @@ namespace VanillaSugar.Ini
         /// <summary>
         /// 结束操作当前区块，并返回到上级 Ini。
         /// </summary>
-        /// <returns>Ini 的链式访问器</returns>
+        /// <returns>Ini 的链式访问器。</returns>
         public ChainIniAccessor CloseSection()
         {
             return _accessor;

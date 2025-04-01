@@ -8,7 +8,7 @@ namespace VanillaSugar.Ini
 {
     /// <summary>
     /// INI 文件读写方法入口类
-    /// 提供简化的静态方法，用于从文件读取出 INI，或导出 INI 到文件中
+    /// 提供简化的静态方法，用于从文件读取出 INI，或导出 INI 到文件中。
     /// </summary>
     public class IniReaderWriter
     {
@@ -26,8 +26,8 @@ namespace VanillaSugar.Ini
         /// 从文件读取解析并返回为 INI 对象。
         /// </summary>
         /// <param name="path">文件路径</param>
-        /// <returns>读取出的 INI</returns>
-        /// <exception cref="ReadWriteException">当 IO 异常时抛出</exception>
+        /// <returns>读取出的 INI。</returns>
+        /// <exception cref="ReadWriteException">当 IO 异常时抛出。</exception>
         public static Ini LoadFromFile(string path)
         {
             return LoadFromFile(path, Encoding.UTF8);
@@ -38,8 +38,8 @@ namespace VanillaSugar.Ini
         /// </summary>
         /// <param name="path">文件路径</param>
         /// <param name="encoding">文件的字符集</param>
-        /// <returns>读取出的 INI</returns>
-        /// <exception cref="ReadWriteException">当 IO 异常时抛出</exception>
+        /// <returns>读取出的 INI。</returns>
+        /// <exception cref="ReadWriteException">当 IO 异常时抛出。</exception>
         public static Ini LoadFromFile(string path, Encoding encoding)
         {
             try
@@ -60,7 +60,7 @@ namespace VanillaSugar.Ini
         /// </summary>
         /// <param name="ini">要保存的 INI 对象</param>
         /// <param name="path">文件路径</param>
-        /// <exception cref="ReadWriteException">当 IO 异常时抛出</exception>
+        /// <exception cref="ReadWriteException">当 IO 异常时抛出。</exception>
         public static void SaveToFile(Ini ini, string path)
         {
             SaveToFile(ini, path, Encoding.UTF8);
@@ -72,7 +72,7 @@ namespace VanillaSugar.Ini
         /// <param name="ini">要保存的 INI 对象</param>
         /// <param name="path">文件路径</param>
         /// <param name="encoding">文件的字符集</param>
-        /// <exception cref="ReadWriteException">当 IO 异常时抛出</exception>
+        /// <exception cref="ReadWriteException">当 IO 异常时抛出。</exception>
         public static void SaveToFile(Ini ini, string path, Encoding encoding)
         {
             try
@@ -90,11 +90,11 @@ namespace VanillaSugar.Ini
 
         /// <summary>
         /// 将 INI 的内容保存到文件中。
-        /// 自动在注释内容前、键值对等号两侧添加空格
+        /// 自动在注释内容前、键值对等号两侧添加空格。
         /// </summary>
         /// <param name="ini">要保存的 INI 对象</param>
         /// <param name="path">文件路径</param>
-        /// <exception cref="ReadWriteException">当 IO 异常时抛出</exception>
+        /// <exception cref="ReadWriteException">当 IO 异常时抛出。</exception>
         public static void SaveToPrettyFile(Ini ini, string path)
         {
             SaveToPrettyFile(ini, path, Encoding.UTF8);
@@ -102,12 +102,12 @@ namespace VanillaSugar.Ini
 
         /// <summary>
         /// 将 INI 的内容保存到文件中。
-        /// 自动在注释内容前、键值对等号两侧添加空格
+        /// 自动在注释内容前、键值对等号两侧添加空格。
         /// </summary>
         /// <param name="ini">要保存的 INI 对象</param>
         /// <param name="path">文件路径</param>
         /// <param name="encoding">文件的字符集</param>
-        /// <exception cref="ReadWriteException">当 IO 异常时抛出</exception>
+        /// <exception cref="ReadWriteException">当 IO 异常时抛出。</exception>
         public static void SaveToPrettyFile(Ini ini, string path, Encoding encoding)
         {
             try
@@ -171,12 +171,12 @@ namespace VanillaSugar.Ini
 
 
         /// <summary>
-        /// 将 INI 内容写出到 <see cref="TextWriter"/> 中
+        /// 将 INI 内容写出到 <see cref="TextWriter"/> 中。
         /// </summary>
         /// <param name="ini">要导出的 INI 对象</param>
         /// <param name="writer">输出流</param>
-        /// <exception cref="ArgumentNullException">如果 <paramref name="ini"/> / <paramref name="writer"/> 中含有 <c>null</c></exception>
-        /// <exception cref="ReadWriteException">如果读取时发生 IO 异常</exception>
+        /// <exception cref="ArgumentNullException">如果 <paramref name="ini"/> / <paramref name="writer"/> 中含有 <c>null</c>。</exception>
+        /// <exception cref="ReadWriteException">如果读取时发生 IO 异常。</exception>
         public void Write(Ini ini, TextWriter writer)
         {
             ObjectHelper.AssertNotNull(ini, nameof(ini));
@@ -207,13 +207,13 @@ namespace VanillaSugar.Ini
         }
 
         /// <summary>
-        /// 将 INI 内容写出到 <see cref="Stream"/> 中
+        /// 将 INI 内容写出到 <see cref="Stream"/> 中。
         /// </summary>
         /// <param name="ini">要导出的 INI 对象</param>
         /// <param name="stream">输出流</param>
         /// <param name="encoding">字符编码 <see cref="Encoding"/></param>
-        /// <exception cref="ArgumentNullException">如果 <paramref name="ini"/> / <paramref name="stream"/> / <paramref name="encoding"/> 中含有 <c>null</c></exception>
-        /// <exception cref="ReadWriteException">如果读取时发生 IO 异常</exception>
+        /// <exception cref="ArgumentNullException">如果 <paramref name="ini"/> / <paramref name="stream"/> / <paramref name="encoding"/> 中含有 <c>null</c>。</exception>
+        /// <exception cref="ReadWriteException">如果读取时发生 IO 异常。</exception>
         public void Write(Ini ini, Stream stream, Encoding encoding)
         {
             ObjectHelper.AssertNotNull(ini, nameof(ini));
@@ -331,12 +331,12 @@ namespace VanillaSugar.Ini
         public bool TrimComment { get; set; } = true;
 
         /// <summary>
-        /// 从 <see cref="TextReader"/> 中读取 INI 内容
+        /// 从 <see cref="TextReader"/> 中读取 INI 内容并解析。
         /// </summary>
         /// <param name="reader">输入流</param>
-        /// <returns>读取的 INI 对象</returns>
-        /// <exception cref="ArgumentNullException">如果 <paramref name="reader"/> 为 <c>null</c></exception>
-        /// <exception cref="ReadWriteException">如果读取时发生 IO 异常</exception>
+        /// <returns>读取的 INI 对象。</returns>
+        /// <exception cref="ArgumentNullException">如果 <paramref name="reader"/> 为 <c>null</c>。</exception>
+        /// <exception cref="ReadWriteException">如果读取时发生 IO 异常。</exception>
         public Ini Read(TextReader reader)
         {
             ObjectHelper.AssertNotNull(reader, nameof(reader));
@@ -354,13 +354,13 @@ namespace VanillaSugar.Ini
         }
 
         /// <summary>
-        /// 从 <see cref="Stream"/> 中读取 INI 内容
+        /// 从 <see cref="Stream"/> 中读取 INI 内容并解析。
         /// </summary>
         /// <param name="stream">输入流</param>
         /// <param name="charset">字符编码 <see cref="Encoding"/></param>
-        /// <returns>读取的 INI 对象</returns>
-        /// <exception cref="ArgumentNullException">如果 <paramref name="stream"/> / <paramref name="charset"/> 中含有 <c>null</c></exception>
-        /// <exception cref="ReadWriteException">如果读取时发生 IO 异常</exception>
+        /// <returns>读取的 INI 对象。</returns>
+        /// <exception cref="ArgumentNullException">如果 <paramref name="stream"/> / <paramref name="charset"/> 中含有 <c>null</c>。</exception>
+        /// <exception cref="ReadWriteException">如果读取时发生 IO 异常。</exception>
         public Ini Read(Stream stream, Encoding charset)
         {
             ObjectHelper.AssertNotNull(stream, nameof(stream));

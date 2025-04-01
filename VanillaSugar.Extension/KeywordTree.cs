@@ -52,8 +52,8 @@ namespace VanillaSugar.Extension
         /// <summary>
         /// 添加关键词。
         /// </summary>
-        /// <param name="keyword">关键词。</param>
-        /// <exception cref="ArgumentException">如果关键词为空则抛出</exception>
+        /// <param name="keyword">关键词</param>
+        /// <exception cref="ArgumentException">如果关键词为空则抛出。</exception>
         public void Add(string keyword)
         {
             if (string.IsNullOrEmpty(keyword))
@@ -93,9 +93,9 @@ namespace VanillaSugar.Extension
         /// <summary>
         /// 判断指定的字符串中是否包含树中的任意关键词。
         /// </summary>
-        /// <param name="target">待判断字符串。</param>
+        /// <param name="target">待判断字符串</param>
         /// <returns>包含的关键词。</returns>
-        /// <exception cref="ArgumentNullException">如果传入值为 null</exception>
+        /// <exception cref="ArgumentNullException">如果传入值为 null。</exception>
         public bool ContainsAny(string target)
         {
             if (target == null) throw new ArgumentNullException(nameof(target));
@@ -118,10 +118,10 @@ namespace VanillaSugar.Extension
         /// <summary>
         /// 在指定的字符串中匹配首个出现的关键词。
         /// </summary>
-        /// <param name="target">待判断字符串。</param>
-        /// <param name="matchShortestText">如果关键词之间形成了子字符串，优先匹配最短的关键词。</param>
+        /// <param name="target">待判断字符串</param>
+        /// <param name="matchShortestText">如果关键词之间形成了子字符串，优先匹配最短的关键词</param>
         /// <returns>匹配到的首个关键词，未匹配到则返回 null。</returns>
-        /// <exception cref="ArgumentNullException">如果传入值为 null</exception>
+        /// <exception cref="ArgumentNullException">如果传入值为 null。</exception>
         public string MatchFirstKeyword(string target, bool matchShortestText)
         {
             return MatchFirstKeyword(target, 0, target.Length, matchShortestText);
@@ -130,12 +130,12 @@ namespace VanillaSugar.Extension
         /// <summary>
         /// 在指定的字符串中匹配首个出现的关键词。
         /// </summary>
-        /// <param name="target">待判断字符串。</param>
-        /// <param name="start">字符串起始位置（包括）。</param>
-        /// <param name="end">字符串结束位置（不包括）。</param>
-        /// <param name="matchShortestText">如果关键词之间形成了子字符串，优先匹配最短的关键词。</param>
+        /// <param name="target">待判断字符串</param>
+        /// <param name="start">字符串起始位置（包括）</param>
+        /// <param name="end">字符串结束位置（不包括）</param>
+        /// <param name="matchShortestText">如果关键词之间形成了子字符串，优先匹配最短的关键词</param>
         /// <returns>匹配到的首个关键词，未匹配到则返回 null。</returns>
-        /// <exception cref="ArgumentNullException">如果传入值为 null</exception>
+        /// <exception cref="ArgumentNullException">如果传入值为 null。</exception>
         public string MatchFirstKeyword(string target, int start, int end, bool matchShortestText)
         {
             if (target == null) throw new ArgumentNullException(nameof(target));
@@ -163,9 +163,9 @@ namespace VanillaSugar.Extension
         /// <summary>
         /// 从指定位置开始匹配关键词，并返回匹配到的长度。
         /// </summary>
-        /// <param name="target">字符串。</param>
-        /// <param name="length">字符串长度。</param>
-        /// <param name="pos">开始匹配位置。</param>
+        /// <param name="target">字符串</param>
+        /// <param name="length">字符串长度</param>
+        /// <param name="pos">开始匹配位置</param>
         /// <param name="matchShortestText">匹配最短文本。</param>
         /// <returns>匹配到的长度，0是未匹配。</returns>
         internal int MatchKeywordLength(string target, int length, int pos, bool matchShortestText)

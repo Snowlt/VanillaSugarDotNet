@@ -14,7 +14,7 @@ namespace VanillaSugar.Core
         /// </summary>
         /// <param name="value">原字符串</param>
         /// <param name="count">要重复的次数</param>
-        /// <returns>重复后的字符串</returns>
+        /// <returns>重复后的字符串。</returns>
         public static string Repeat(this string value, int count)
         {
             if (count <= 0)
@@ -49,7 +49,7 @@ namespace VanillaSugar.Core
         /// <param name="value">原字符串</param>
         /// <param name="suffix">后缀</param>
         /// <param name="comparisonType">字符串的比较方式</param>
-        /// <returns>添加了后缀的字符串或原字符串</returns>
+        /// <returns>添加了后缀的字符串或原字符串。</returns>
         public static string AppendIfMissing(this string value, string suffix,
             StringComparison comparisonType = StringComparison.Ordinal)
         {
@@ -65,7 +65,7 @@ namespace VanillaSugar.Core
         /// <param name="value">原字符串</param>
         /// <param name="prefix">前缀</param>
         /// <param name="comparisonType">字符串的比较方式</param>
-        /// <returns>添加了前缀的字符串或原字符串</returns>
+        /// <returns>添加了前缀的字符串或原字符串。</returns>
         public static string PrependIfMissing(this string value, string prefix,
             StringComparison comparisonType = StringComparison.Ordinal)
         {
@@ -78,7 +78,7 @@ namespace VanillaSugar.Core
         /// 将字符串首字母大写，除了第一个字符外其他字符不会改变。
         /// </summary>
         /// <param name="value">原字符串</param>
-        /// <returns>首字母大写的字符串</returns>
+        /// <returns>首字母大写的字符串。</returns>
         public static string Capitalize(this string value)
         {
             if (string.IsNullOrEmpty(value)) return value;
@@ -92,7 +92,7 @@ namespace VanillaSugar.Core
         /// 将字符串首字母小写，除了第一个字符外其他字符不会改变。
         /// </summary>
         /// <param name="value">原字符串</param>
-        /// <returns>首字母小写的字符串</returns>
+        /// <returns>首字母小写的字符串。</returns>
         public static string Uncapitalize(this string value)
         {
             if (string.IsNullOrEmpty(value)) return value;

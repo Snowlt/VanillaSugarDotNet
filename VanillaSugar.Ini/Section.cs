@@ -8,6 +8,16 @@ using VanillaSugar.Ini.Exception;
 
 namespace VanillaSugar.Ini
 {
+    /// <summary>
+    /// 表示一个 <see cref="Ini"/> 内的区块。
+    /// <para>一个区块内通常由多个以下部分组成：
+    /// <list type="bullet">
+    /// <item>项（键值对）: 用于存放数据；</item>
+    /// <item>注释: 处于项上方或下方的描述性文本，对应 INI 文件中以 <c>;</c> 符号开头的行；</item>
+    /// </list>
+    /// 在一些非标准格式的 INI 文件中区块头部可能出现既不是项、也不是注释的行。针对这种情况此类也提供了兼容，请见 <see cref="DanglingText"/>。
+    /// </para>
+    /// </summary>
     public class Section : IEnumerable<KeyValuePair<string, string>>, IEquatable<Section>
     {
         private readonly Dictionary<string, string> _items = new Dictionary<string, string>();
@@ -53,8 +63,8 @@ namespace VanillaSugar.Ini
         /// 如果键名（Key）不存在，则返回 <c>null</c>。
         /// </summary>
         /// <param name="key">键名</param>
-        /// <returns>值</returns>
-        /// <exception cref="ArgumentNullException">当 <c>key</c> 为 <c>null</c></exception>
+        /// <returns>值。</returns>
+        /// <exception cref="ArgumentNullException">当 <c>key</c> 为 <c>null</c>。</exception>
         public string Get(string key)
         {
             if (key == null) throw new ArgumentNullException(nameof(key));
@@ -67,7 +77,7 @@ namespace VanillaSugar.Ini
         /// </summary>
         /// <param name="key">键名</param>
         /// <param name="value">值</param>
-        /// <exception cref="ArgumentNullException">当 <c>key</c> 或 <c>value</c> 为 <c>null</c></exception>
+        /// <exception cref="ArgumentNullException">当 <c>key</c> 或 <c>value</c> 为 <c>null</c>。</exception>
         public void Set(string key, object value)
         {
             ObjectHelper.AssertNotNull(key, nameof(key));
@@ -83,8 +93,8 @@ namespace VanillaSugar.Ini
         /// </summary>
         /// <param name="key">键名</param>
         /// <param name="def">当键名不存在时的替代返回值</param>
-        /// <returns>值或替代值</returns>
-        /// <exception cref="ArgumentNullException">当 <c>key</c> 为 <c>null</c></exception>
+        /// <returns>值或替代值。</returns>
+        /// <exception cref="ArgumentNullException">当 <c>key</c> 为 <c>null</c>。</exception>
         public string Get(string key, string def)
         {
             string value = Get(key);
@@ -95,9 +105,9 @@ namespace VanillaSugar.Ini
         /// 获取此区块中指定项（键值对）的值，并转为 <c>int</c> 返回。
         /// </summary>
         /// <param name="key">键名</param>
-        /// <returns>值</returns>
-        /// <exception cref="ArgumentNullException">当 <c>key</c> 为 <c>null</c></exception>
-        /// <exception cref="AccessValueException">当键（Key）不存在，或值无法转换为 <c>int</c></exception>
+        /// <returns>值。</returns>
+        /// <exception cref="ArgumentNullException">当 <c>key</c> 为 <c>null</c>。</exception>
+        /// <exception cref="AccessValueException">当键（Key）不存在，或值无法转换为 <c>int</c>。</exception>
         public int GetAsInt(string key)
         {
             string value = Get(key);
@@ -109,9 +119,9 @@ namespace VanillaSugar.Ini
         /// 获取此区块中指定项（键值对）的值，并转为 <c>long</c> 返回。
         /// </summary>
         /// <param name="key">键名</param>
-        /// <returns>值</returns>
-        /// <exception cref="ArgumentNullException">当 <c>key</c> 为 <c>null</c></exception>
-        /// <exception cref="AccessValueException">当键（Key）不存在，或值无法转换为 <c>long</c></exception>
+        /// <returns>值。</returns>
+        /// <exception cref="ArgumentNullException">当 <c>key</c> 为 <c>null</c>。</exception>
+        /// <exception cref="AccessValueException">当键（Key）不存在，或值无法转换为 <c>long</c>。</exception>
         public long GetAsLong(string key)
         {
             string value = Get(key);
@@ -127,8 +137,8 @@ namespace VanillaSugar.Ini
         /// 获取此区块中指定项（键值对）的值，并转为 <c>boolean</c> 返回。
         /// </summary>
         /// <param name="key">键名</param>
-        /// <returns>值</returns>
-        /// <exception cref="ArgumentNullException">当 <c>key</c> 为 <c>null</c></exception>
+        /// <returns>值。</returns>
+        /// <exception cref="ArgumentNullException">当 <c>key</c> 为 <c>null</c>。</exception>
         /// <see cref="bool.Parse(string)"/> 转换方法
         public bool GetAsBool(string key)
         {
@@ -140,8 +150,8 @@ namespace VanillaSugar.Ini
         /// 检测此区块中是否包含某项（键值对）。
         /// </summary>
         /// <param name="key">键名</param>
-        /// <returns>包含时返回 <c>true</c>, 不包含返回 <c>false</c></returns>
-        /// <exception cref="ArgumentNullException">当 <c>key</c> 为 <c>null</c></exception>
+        /// <returns>包含时返回 <c>true</c>, 不包含返回 <c>false</c>。</returns>
+        /// <exception cref="ArgumentNullException">当 <c>key</c> 为 <c>null</c>。</exception>
         public bool Contains(string key)
         {
             if (key == null) throw new ArgumentNullException(nameof(key));
@@ -152,8 +162,8 @@ namespace VanillaSugar.Ini
         /// 移除指定项（键值对）。
         /// </summary>
         /// <param name="key">键名</param>
-        /// <returns>成功移除返回 <c>true</c>, 否则返回 <c>false</c></returns>
-        /// <exception cref="ArgumentNullException">当 <c>key</c> 为 <c>null</c></exception>
+        /// <returns>成功移除返回 <c>true</c>, 否则返回 <c>false</c>。</returns>
+        /// <exception cref="ArgumentNullException">当 <c>key</c> 为 <c>null</c>。</exception>
         public bool Remove(string key)
         {
             if (key == null) throw new ArgumentNullException(nameof(key));
@@ -182,8 +192,8 @@ namespace VanillaSugar.Ini
         /// </summary>
         /// <param name="key">键名</param>
         /// <param name="newKey">新的键名</param>
-        /// <returns>成功修改返回 <c>true</c>, 否则返回 <c>false</c></returns>
-        /// <exception cref="ArgumentNullException">当 <c>key</c> 或 <c>newKey</c> 为 <c>null</c></exception>
+        /// <returns>成功修改返回 <c>true</c>, 否则返回 <c>false</c>。</returns>
+        /// <exception cref="ArgumentNullException">当 <c>key</c> 或 <c>newKey</c> 为 <c>null</c>。</exception>
         public bool Rename(string key, string newKey)
         {
             if (key == null) throw new ArgumentNullException(nameof(key));
@@ -249,8 +259,8 @@ namespace VanillaSugar.Ini
         /// 获取指定项（键值对）到上一项（键值对）之间的全部注释。
         /// </summary>
         /// <param name="key">键名</param>
-        /// <returns>注释列表</returns>
-        /// <exception cref="AccessValueException">当键（Key）不存在或为 <c>null</c></exception>
+        /// <returns>注释列表。</returns>
+        /// <exception cref="AccessValueException">当键（Key）不存在或为 <c>null</c>。</exception>
         public IReadOnlyList<string> GetCommentsBefore(string key)
         {
             int i = FindKeyIndex(key);
@@ -263,7 +273,7 @@ namespace VanillaSugar.Ini
         /// </summary>
         /// <param name="key">键名</param>
         /// <param name="contents">注释的内容</param>
-        /// <exception cref="AccessValueException">当键（Key）不存在或为 <c>null</c></exception>
+        /// <exception cref="AccessValueException">当键（Key）不存在或为 <c>null</c>。</exception>
         public void AddCommentsBefore(string key, ICollection<string> contents)
         {
             int i = FindKeyIndex(key);
@@ -275,7 +285,7 @@ namespace VanillaSugar.Ini
         /// 移除指定项（键值对）到上一项（键值对）之间的全部注释。
         /// </summary>
         /// <param name="key">键名</param>
-        /// <exception cref="AccessValueException">当键（Key）不存在或为 <c>null</c></exception>
+        /// <exception cref="AccessValueException">当键（Key）不存在或为 <c>null</c>。</exception>
         public void RemoveCommentsBefore(string key)
         {
             int i = FindKeyIndex(key);
@@ -287,8 +297,8 @@ namespace VanillaSugar.Ini
         /// 获取指定项（键值对）到下一项（键值对）之间的全部注释。
         /// </summary>
         /// <param name="key">键名</param>
-        /// <returns>注释列表</returns>
-        /// <exception cref="AccessValueException">当键（Key）不存在或为 <c>null</c></exception>
+        /// <returns>注释列表。</returns>
+        /// <exception cref="AccessValueException">当键（Key）不存在或为 <c>null</c>。</exception>
         public IReadOnlyList<string> GetCommentsAfter(string key)
         {
             Node node = FindKeyNode(key);
@@ -300,7 +310,7 @@ namespace VanillaSugar.Ini
         /// </summary>
         /// <param name="key">键名</param>
         /// <param name="contents">注释的内容</param>
-        /// <exception cref="AccessValueException">当键（Key）不存在或为 <c>null</c></exception>
+        /// <exception cref="AccessValueException">当键（Key）不存在或为 <c>null</c>。</exception>
         public void AddCommentsAfter(string key, ICollection<string> contents)
         {
             Node node = FindKeyNode(key);
@@ -311,7 +321,7 @@ namespace VanillaSugar.Ini
         /// 在指定项（键值对）到下一项（键值对）之间添加注释，如果已有注释则合并到末尾。
         /// </summary>
         /// <param name="key">键名</param>
-        /// <exception cref="AccessValueException">当键（Key）不存在或为 <c>null</c></exception>
+        /// <exception cref="AccessValueException">当键（Key）不存在或为 <c>null</c>。</exception>
         public void RemoveCommentsAfter(string key)
         {
             Node node = FindKeyNode(key);
@@ -322,7 +332,7 @@ namespace VanillaSugar.Ini
         /// 获取所有的注释。
         /// 注释按添加顺序排列。
         /// </summary>
-        /// <returns>注释列表</returns>
+        /// <returns>注释列表。</returns>
         public IReadOnlyList<string> GetComments()
         {
             List<string> comments = _topComments;
@@ -356,6 +366,11 @@ namespace VanillaSugar.Ini
             return new Dictionary<string, string>(_items);
         }
 
+        /// <summary>
+        /// <inheritdoc cref="IEnumerable{T}.GetEnumerator"/>
+        /// </summary>
+        /// <returns>返回一个 <see cref="IEnumerator{T}"/>，用于以 <see cref="KeyValuePair{TKey,TValue}"/>
+        /// 键名和值的形式访问当前区块中所有的项（键值对）。</returns>
         public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
         {
             return _items.GetEnumerator();
@@ -368,6 +383,14 @@ namespace VanillaSugar.Ini
 
         #endregion
 
+        /// <summary>
+        /// 比较当前对象和 <paramref name="other"/> 内容是否相同。
+        /// <para>当两个对象含有相同项（键值对）和注释，出现顺序也相同，才视为内容相同。
+        /// 传入 <c>null</c> 则总是返回 <c>false</c>。
+        /// </para>
+        /// </summary>
+        /// <param name="other">要比较的对象</param>
+        /// <returns>如果内容相同则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
         public bool Equals(Section other)
         {
             if (other is null) return false;
@@ -376,11 +399,21 @@ namespace VanillaSugar.Ini
                    DanglingText == other.DanglingText;
         }
 
+        /// <summary>
+        /// 比较当前对象和 <paramref name="obj"/> 内容是否相同。
+        /// </summary>
+        /// <param name="obj">要比较的对象</param>
+        /// <returns>如果要比较的对象是 <see cref="Section"/> 且内容相同则返回 <c>true</c>，否则返回 <c>false</c>。</returns>
+        /// <seealso cref="Equals(VanillaSugar.Ini.Section)"/>
         public override bool Equals(object obj)
         {
             return obj is Section section && Equals(section);
         }
 
+        /// <summary>
+        /// 计算当前对象的 hash 码。
+        /// </summary>
+        /// <returns>hash 码。</returns>
         [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
         public override int GetHashCode()
         {
@@ -392,7 +425,7 @@ namespace VanillaSugar.Ini
         /// <summary>
         /// 创建一个当前 Section 对象的副本（深拷贝）。
         /// </summary>
-        /// <returns>当前对象的副本</returns>
+        /// <returns>当前对象的副本。</returns>
         internal Section DeepClone()
         {
             Section section = new Section();
@@ -447,8 +480,8 @@ namespace VanillaSugar.Ini
         /// 查找键的索引。
         /// </summary>
         /// <param name="key">要查找的键</param>
-        /// <returns>键的索引</returns>
-        /// <exception cref="AccessValueException">如果键未找到</exception>
+        /// <returns>键的索引。</returns>
+        /// <exception cref="AccessValueException">如果键未找到。</exception>
         private int FindKeyIndex(string key)
         {
             for (int i = 0; i < _nodes.Count; i++)
@@ -464,8 +497,8 @@ namespace VanillaSugar.Ini
         /// 返回指定键的节点。
         /// </summary>
         /// <param name="key">指定的键</param>
-        /// <returns>节点</returns>
-        /// <exception cref="AccessValueException">如果键未找到</exception>
+        /// <returns>节点。</returns>
+        /// <exception cref="AccessValueException">如果键未找到。</exception>
         private Node FindKeyNode(string key)
         {
             return _nodes[FindKeyIndex(key)];
@@ -500,7 +533,7 @@ namespace VanillaSugar.Ini
             public List<string> Comments { get; private set; }
 
             /// <summary>
-            /// 初始化一个新的 Node 实例
+            /// 初始化一个新的 Node 实例。
             /// </summary>
             /// <param name="key">节点的键名</param>
             public Node(string key)
@@ -509,7 +542,7 @@ namespace VanillaSugar.Ini
             }
 
             /// <summary>
-            /// 向节点追加注释
+            /// 向节点追加注释。
             /// </summary>
             /// <param name="comments">要追加的注释列表</param>
             public void AppendComments(ICollection<string> comments)
@@ -520,7 +553,7 @@ namespace VanillaSugar.Ini
             }
 
             /// <summary>
-            /// 移除节点的所有注释
+            /// 移除节点的所有注释。
             /// </summary>
             public void RemoveComments()
             {
@@ -528,7 +561,7 @@ namespace VanillaSugar.Ini
             }
 
             /// <summary>
-            /// 获取节点的字符串表示形式
+            /// 获取节点的字符串表示形式。
             /// </summary>
             /// <returns>节点的字符串表示</returns>
             public override string ToString()
@@ -542,10 +575,10 @@ namespace VanillaSugar.Ini
             }
 
             /// <summary>
-            /// 判断两个节点是否相等
+            /// 判断两个节点是否相等。
             /// </summary>
             /// <param name="obj">要比较的节点</param>
-            /// <returns>是否相等</returns>
+            /// <returns>是否相等。</returns>
             public override bool Equals(object obj)
             {
                 return obj is Node node && Equals(node);
@@ -554,7 +587,7 @@ namespace VanillaSugar.Ini
             /// <summary>
             /// 获取节点的哈希码
             /// </summary>
-            /// <returns>节点的哈希码</returns>
+            /// <returns>节点的哈希码。</returns>
             [SuppressMessage("ReSharper", "NonReadonlyMemberInGetHashCode")]
             public override int GetHashCode()
             {

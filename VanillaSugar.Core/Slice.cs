@@ -126,7 +126,7 @@ namespace VanillaSugar.Core
         /// <summary>
         /// 生成描述切片信息的字符串
         /// </summary>
-        /// <returns>字符串</returns>
+        /// <returns>字符串。</returns>
         public override string ToString()
         {
             return "Slice{start=" + Start + ", stopIncluded=" + StopIncluded + ", step=" + Step + ", size=" + Size +
@@ -154,8 +154,8 @@ namespace VanillaSugar.Core
         /// <param name="start">起始下标(包含)</param>
         /// <param name="stop">结束下标(不包含)</param>
         /// <param name="step">步长(默认为1，不能为0)</param>
-        /// <returns>新生成的列表</returns>
-        /// <exception cref="ArgumentException">当步长为 0 时抛出</exception>
+        /// <returns>新生成的列表。</returns>
+        /// <exception cref="ArgumentException">当步长为 0 时抛出。</exception>
         public static IList<T> Slice<T>(this IList<T> list, int? start = null, int? stop = null, int? step = null)
         {
             Slice slice = new Slice(start, stop, step, list.Count);
@@ -172,8 +172,8 @@ namespace VanillaSugar.Core
         /// <param name="start">起始下标(包含)</param>
         /// <param name="stop">结束下标(不包含)</param>
         /// <param name="step">步长(默认为1，不能为0)</param>
-        /// <returns>新生成的列表</returns>
-        /// <exception cref="ArgumentException">当步长为 0 时抛出</exception>
+        /// <returns>新生成的列表。</returns>
+        /// <exception cref="ArgumentException">当步长为 0 时抛出。</exception>
         public static IEnumerable<T> Slice<T>(this IEnumerable<T> enumerable, int? start = null, int? stop = null,
             int? step = null)
         {
@@ -200,8 +200,8 @@ namespace VanillaSugar.Core
         /// <param name="start">起始下标(包含)</param>
         /// <param name="stop">结束下标(不包含)</param>
         /// <param name="step">步长(默认为1，不能为0)</param>
-        /// <returns>处理后生成的字符串</returns>
-        /// <exception cref="ArgumentException">当步长为 0 时抛出</exception>
+        /// <returns>处理后生成的字符串。</returns>
+        /// <exception cref="ArgumentException">当步长为 0 时抛出。</exception>
         public static string Slice(this string s, int? start = null, int? stop = null, int? step = null)
         {
             Slice slice = new Slice(start, stop, step, s.Length);
@@ -217,8 +217,8 @@ namespace VanillaSugar.Core
         /// <param name="start">起始下标(包含)</param>
         /// <param name="stop">结束下标(不包含)</param>
         /// <param name="step">步长(默认为1，不能为0)</param>
-        /// <returns>新生成的数组</returns>
-        /// <exception cref="ArgumentException">当步长为 0 时抛出</exception>
+        /// <returns>新生成的数组。</returns>
+        /// <exception cref="ArgumentException">当步长为 0 时抛出。</exception>
         public static T[] Slice<T>(this T[] array, int? start = null, int? stop = null, int? step = null)
         {
             Slice slice = new Slice(start, stop, step, array.Length);
